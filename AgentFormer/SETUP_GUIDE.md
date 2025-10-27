@@ -28,8 +28,8 @@ source ~/.bashrc
 
 ```bash
 # Clone to your desired location
-git clone https://github.com/YOUR_USERNAME/vision-augmented-agentformer.git
-cd vision-augmented-agentformer
+git clone https://github.com/YOUR_USERNAME/BTP-Vision-Augmented-Trajectory-Prediction.git
+cd BTP-Vision-Augmented-Trajectory-Prediction/AgentFormer
 ```
 
 ### 3. Create Conda Environment
@@ -39,15 +39,17 @@ cd vision-augmented-agentformer
 conda create -n agentformer python=3.7 -y
 conda activate agentformer
 
-# Verify CUDA version (must be 11.1+)
+# Verify CUDA version (must be 11.0+)
 nvidia-smi
 ```
 
-### 4. Install PyTorch with CUDA
+**Note**: This setup has been tested with CUDA 13.0 and NVIDIA driver 580.95.05.
+
+### 4. Install PyTorch with CUDA 11.7
 
 ```bash
-# For CUDA 11.1
-pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+# Install PyTorch 1.13.1 with CUDA 11.7 support
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
 
 # Verify installation
 python -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA Available: {torch.cuda.is_available()}')"
@@ -55,21 +57,62 @@ python -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA Av
 
 Expected output:
 ```
-PyTorch: 1.9.0+cu111
+PyTorch: 1.13.1+cu117
 CUDA Available: True
 ```
 
-### 5. Install Dependencies
+### 5. Install MMCV and MMDetection Suite
+
+**Important**: Install in this exact order to avoid dependency conflicts.
 
 ```bash
-# Install all required packages
-pip install -r requirements.txt
+# Install MMCV 2.0.0 (pre-built wheel for PyTorch 1.13 + CUDA 11.7)
+pip install mmcv==2.0.0 -f https://download.openmmlab.com/mmcv/dist/cu117/torch1.13/index.html
 
-# Install nuScenes devkit
-pip install nuscenes-devkit
+# Install MMEngine
+pip install mmengine==0.10.7
+
+# Install MMDetection
+pip install mmdet==3.3.0
+
+# Install MMDetection3D
+pip install mmdet3d==1.4.0
 ```
 
-### 6. Download nuScenes Dataset
+Verify installation:
+```bash
+python -c "import mmcv; print(f'MMCV: {mmcv.__version__}'); import mmdet; print(f'MMDet: {mmdet.__version__}'); import mmdet3d; print(f'MMDet3D: {mmdet3d.__version__}')"
+```
+
+Expected output:
+```
+MMCV: 2.0.0
+MMDet: 3.3.0
+MMDet3D: 1.4.0
+```
+
+### 6. Install Other Dependencies
+
+```bash
+# Install all other required packages
+pip install -r requirements.txt
+
+# Note: PyTorch and MMCV are already installed, pip will skip them
+```
+
+### 7. Compile CUDA Extensions (Optional)
+
+**Note**: Only needed if you want to use on-the-fly BEV feature computation. Skip if using pre-computed features.
+
+```bash
+# Set CUDA_HOME environment variable
+export CUDA_HOME=/usr/local/cuda
+
+# Compile voxel pooling CUDA extension
+python setup.py develop
+```
+
+### 8. Download nuScenes Dataset
 
 **Important**: You only need 10% of the dataset (~30GB) for this project.
 
@@ -78,43 +121,39 @@ pip install nuscenes-devkit
 1. Go to https://www.nuscenes.org/nuscenes
 2. Create account and sign in
 3. Go to "Download" page
-4. Download:
+4. Download **only these files**:
    - `v1.0-trainval_meta.tgz` (~2GB) - Metadata
-   - `v1.0-trainval_01.tgz` (~30GB) - Part 1 only
+   - `v1.0-trainval01_blobs.tgz` through `v1.0-trainval10_blobs.tgz` (~30GB total) - First 10% of data
 
-#### Method 2: Using wget
-
+5. Extract to `nuscenes/` directory:
 ```bash
 # Create dataset directory
-mkdir -p datasets/nuscenes_pred
-cd datasets/nuscenes_pred
+mkdir -p nuscenes
+cd nuscenes
 
-# Download metadata (replace with actual download link from nuScenes)
-wget <NUSCENES_META_URL> -O v1.0-trainval_meta.tgz
+# Extract metadata
+tar -xzf ../v1.0-trainval_meta.tgz
 
-# Download Part 1 only (replace with actual download link)
-wget <NUSCENES_PART1_URL> -O v1.0-trainval_01.tgz
+# Extract data blobs (1-10 only)
+for i in {01..10}; do
+    tar -xzf ../v1.0-trainval${i}_blobs.tgz
+done
 
-# Extract
-tar -xzf v1.0-trainval_meta.tgz
-tar -xzf v1.0-trainval_01.tgz
-
-# Return to project root
-cd ../..
+cd ..
 ```
 
-### 7. Verify Dataset Structure
+### 9. Verify Dataset Structure
 
 After extraction, verify your directory structure:
 
 ```bash
-ls -R datasets/nuscenes_pred/
+ls nuscenes/
 ```
 
 Expected structure:
 ```
-datasets/nuscenes_pred/
-├── v1.0-trainval/
+nuscenes/
+├── v1.0-trainval/          # Metadata JSON files
 │   ├── attribute.json
 │   ├── calibrated_sensor.json
 │   ├── category.json
@@ -128,7 +167,7 @@ datasets/nuscenes_pred/
 │   ├── scene.json
 │   ├── sensor.json
 │   └── visibility.json
-├── samples/
+├── samples/                # Sensor data
 │   ├── CAM_BACK/
 │   ├── CAM_BACK_LEFT/
 │   ├── CAM_BACK_RIGHT/
@@ -137,19 +176,21 @@ datasets/nuscenes_pred/
 │   ├── CAM_FRONT_RIGHT/
 │   ├── LIDAR_TOP/
 │   └── RADAR_*/
-├── sweeps/
+├── sweeps/                 # Additional sweeps
 │   └── [similar structure]
-└── maps/
+└── maps/                   # HD maps
     ├── basemap/
     └── expansion/
 ```
 
-### 8. Filter Dataset to 85 Available Scenes
+### 10. Filter Dataset to 10% Subset
 
 ```bash
-# Run filtering script
+# Create filtered metadata for available scenes
 python scripts/filter_nuscenes_subset.py
 ```
+
+This creates `data/v1.0-trainval-subset/` with metadata for 85 scenes.
 
 Expected output:
 ```
@@ -158,12 +199,16 @@ Copying metadata files to v1.0-trainval-subset...
 Created filtered subset with 85 scenes
 ```
 
-### 9. Generate .pkl Info Files
+### 11. Generate Processed Dataset Files
 
 ```bash
-# Generate subset info files
+# Generate AgentFormer-specific data files
 python scripts/gen_info_subset.py
 ```
+
+This creates pickle files in `datasets/nuscenes_pred/`:
+- `nuscenes_infos_train_subset.pkl` (2,462 samples)
+- `nuscenes_infos_val_subset.pkl` (914 samples)
 
 Expected output:
 ```
@@ -178,11 +223,27 @@ Val: 914 samples from 23 scenes
 Total: 3376 samples from 85 scenes
 ```
 
-### 10. Verify Setup with Quick Test
+### 12. Pre-compute BEV Features (Recommended)
+
+Pre-computing BEV features saves GPU memory (3-4GB) and training time.
+
+```bash
+# Extract BEV features for train_subset (~1-2 hours)
+conda run -n agentformer python scripts/precompute_bev_features.py --split train_subset --gpu 0
+
+# Extract BEV features for val_subset (~20-30 minutes)
+conda run -n agentformer python scripts/precompute_bev_features.py --split val_subset --gpu 0
+```
+
+This creates `bev_features/train_subset/` and `bev_features/val_subset/` directories (~24GB total).
+
+See `PRECOMPUTED_BEV_GUIDE.md` for more details.
+
+### 13. Verify Setup with Quick Test
 
 ```bash
 # Run quick pipeline test (~5-10 minutes)
-python quick_test_pipeline.py
+conda run -n agentformer python quick_test_pipeline.py
 ```
 
 Expected output:
@@ -210,13 +271,16 @@ STAGE 3: Evaluation Test (20 samples)
 ======================================================================
 ```
 
-### 11. Start Training
+### 14. Start Training
 
 If the quick test passes, you're ready to train:
 
 ```bash
-# Stage 1: VAE Pre-training
-python train.py --cfg nuscenes_5sample_agentformer_pre --gpu 0
+# Baseline AgentFormer (without BEV features)
+conda run -n agentformer python train.py --cfg nuscenes_baseline --gpu 0
+
+# Vision-Augmented AgentFormer (with pre-computed BEV features)
+conda run -n agentformer python train.py --cfg nuscenes_bev --gpu 0
 ```
 
 ## Troubleshooting Setup Issues
@@ -234,29 +298,28 @@ sudo reboot
 # After reboot, reinstall PyTorch with correct CUDA version
 conda activate agentformer
 pip uninstall torch torchvision
-pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
 ```
 
-### Import Errors
+### MMCV Import Errors
 
 ```bash
-# Ensure conda environment is activated
+# Ensure correct MMCV version
 conda activate agentformer
-
-# Reinstall dependencies
-pip install -r requirements.txt --force-reinstall
+pip uninstall mmcv mmcv-full
+pip install mmcv==2.0.0 -f https://download.openmmlab.com/mmcv/dist/cu117/torch1.13/index.html
 ```
 
 ### Dataset Not Found
 
 ```bash
 # Check if dataset extracted correctly
-ls datasets/nuscenes_pred/v1.0-trainval/
+ls nuscenes/v1.0-trainval/
 
 # If empty, re-extract
-cd datasets/nuscenes_pred
-tar -xzf v1.0-trainval_meta.tgz
-tar -xzf v1.0-trainval_01.tgz
+cd nuscenes
+tar -xzf ../v1.0-trainval_meta.tgz
+for i in {01..10}; do tar -xzf ../v1.0-trainval${i}_blobs.tgz; done
 ```
 
 ### Out of Disk Space
@@ -272,22 +335,55 @@ pip cache purge
 # Or mount additional storage for datasets
 ```
 
+### MMDetection Build Errors
+
+If you encounter build errors with mmdet or mmdet3d:
+
+```bash
+# Install build dependencies
+conda install -c conda-forge gxx_linux-64 gcc_linux-64
+
+# Reinstall mmdet/mmdet3d
+pip install --no-cache-dir mmdet==3.3.0
+pip install --no-cache-dir mmdet3d==1.4.0
+```
+
+## System Requirements
+
+### Tested Configuration
+
+- **OS**: Ubuntu 22.04 LTS
+- **Python**: 3.7.12
+- **CUDA**: 13.0 (driver 580.95.05)
+- **GPU**: NVIDIA RTX 4050 Laptop GPU (6GB VRAM)
+- **PyTorch**: 1.13.1+cu117
+- **MMCV**: 2.0.0
+
+### Minimum Requirements
+
+- **RAM**: 16GB (8GB RAM + 8GB swap recommended)
+- **GPU Memory**: 6GB VRAM minimum
+- **Disk Space**: 50GB (30GB for dataset + 20GB for features and checkpoints)
+- **CUDA**: 11.0 or higher
+
 ## Next Steps
 
-Once setup is complete, see the main `README_MODIFICATIONS.md` for:
-- Full training instructions
-- Configuration options
-- Ablation study guide
-- Performance benchmarks
+Once setup is complete, see the following guides:
+
+- `README.md` - Project overview and quick start
+- `README_MODIFICATIONS.md` - Detailed code changes and architecture
+- `PRECOMPUTED_BEV_GUIDE.md` - Using pre-computed BEV features
+- Training configurations in `cfg/` directory
 
 ## Estimated Time
 
-- Setup (steps 1-5): ~30 minutes
-- Dataset download (step 6): ~2-4 hours (depends on internet speed)
-- Dataset processing (steps 7-9): ~10 minutes
-- Quick test (step 10): ~5-10 minutes
+- Setup (steps 1-6): ~30 minutes
+- Dataset download (step 8): ~2-4 hours (depends on internet speed)
+- Dataset processing (steps 9-11): ~10 minutes
+- BEV feature extraction (step 12): ~1-2 hours
+- Quick test (step 13): ~5-10 minutes
 
-**Total**: ~3-5 hours (mostly waiting for downloads)
+**Total**: ~4-7 hours (mostly waiting for downloads and feature extraction)
 
 ## Verification Checklist
 
@@ -295,11 +391,12 @@ Before starting full training, verify:
 
 - [ ] `conda activate agentformer` works
 - [ ] `python -c "import torch; print(torch.cuda.is_available())"` returns `True`
-- [ ] `datasets/nuscenes_pred/v1.0-trainval-subset/` exists
+- [ ] `nuscenes/v1.0-trainval/` exists with JSON files
+- [ ] `data/v1.0-trainval-subset/` exists
 - [ ] Files exist:
   - [ ] `datasets/nuscenes_pred/nuscenes_infos_train_subset.pkl`
   - [ ] `datasets/nuscenes_pred/nuscenes_infos_val_subset.pkl`
-  - [ ] `datasets/nuscenes_pred/nuscenes_infos_all_subset.pkl`
+  - [ ] `bev_features/train_subset/` (if using pre-computed features)
 - [ ] `python quick_test_pipeline.py` completes successfully
 - [ ] GPU memory: `nvidia-smi` shows at least 6GB available
 
