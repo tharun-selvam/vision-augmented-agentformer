@@ -1,0 +1,59 @@
+# Python
+*.pyc
+*.pyo
+*.egg-info/
+__pycache__/
+build/
+dist/
+*.egg
+
+# Large datasets (download separately)
+AgentFormer/datasets/
+AgentFormer/nuscenes/
+AgentFormer/data/v1.0-trainval/
+AgentFormer/data/samples/
+AgentFormer/data/sweeps/
+AgentFormer/data/maps/
+AgentFormer/data/*.pkl
+BEVDepth/data/
+mmdetection3d/data/
+
+# Pre-computed features (too large for git)
+AgentFormer/bev_features/
+*.pt
+
+# Model checkpoints
+AgentFormer/results/
+BEVDepth/outputs/
+*.pth
+*.ckpt
+
+# Logs
+*.log
+*.txt
+!requirements.txt
+!README*.txt
+!README*.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude CLI
+.claude/
+
+# PDFs (too large)
+*.pdf
+
+# Temporary files
+*.tmp
+.DS_Store
+
+# Compiled CUDA extensions
+AgentFormer/ops/
+BEVDepth/ops/
+
+# System files
+context.txt

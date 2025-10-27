@@ -1,0 +1,57 @@
+# Original ignores
+nuscenes/
+*/__pycache__/
+results/
+model/common/
+
+# Python
+*.pyc
+*.pyo
+*.egg-info/
+__pycache__/
+build/
+dist/
+*.egg
+
+# Dataset files (too large for git)
+datasets/
+data/v1.0-trainval/
+data/v1.0-trainval-subset/
+data/samples/
+data/sweeps/
+data/maps/
+data/*.pkl
+*.pkl
+
+# BEVDepth compiled
+ops/
+
+# Conda environment
+.conda/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and checkpoints
+*.log
+*.txt
+!requirements.txt
+!README*.txt
+!README*.md
+
+# Temporary files
+*.tmp
+.DS_Store
+
+# Large conversation exports
+2025-*.txt
+
+# Pre-computed BEV features (too large for git)
+bev_features/
+*.pt
+
+# BEVDepth directory (clone separately)
+bevdepth/
