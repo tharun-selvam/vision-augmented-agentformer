@@ -2,7 +2,6 @@
 /nuscenes/
 */__pycache__/
 results/
-model/common/
 
 # Python
 *.pyc
