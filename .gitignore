@@ -34,6 +34,7 @@ BEVDepth/outputs/
 !requirements.txt
 !README*.txt
 !README*.md
+!contet.txt
 
 # IDE
 .vscode/
