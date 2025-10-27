@@ -1,5 +1,5 @@
 # Original ignores
-nuscenes/
+/nuscenes/
 */__pycache__/
 results/
 model/common/

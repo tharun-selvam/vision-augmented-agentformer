@@ -1,0 +1,140 @@
+# ------------------- General Options -------------------------
+
+description                  : AgentFormer with BEVDepth (Before DLow)
+results_root_dir             : results
+seed                         : 10
+dataset                      : nuscenes_pred
+data_root_ethucy             : datasets/eth_ucy
+data_root_nuscenes_pred      : datasets/nuscenes_pred
+info_train_path              : datasets/nuscenes_pred/nuscenes_infos_train_subset.pkl
+info_val_path                : datasets/nuscenes_pred/nuscenes_infos_val_subset.pkl
+load_map                     : true
+map_version                  : 0.1
+
+# ------------------- Feature Extractor -------------------------
+
+past_frames                  : 4
+future_frames                : 12
+min_past_frames              : 2
+min_future_frames            : 12
+
+traj_scale                   : 10
+motion_dim                   : 2
+forecast_dim                 : 2
+
+# ------------------- Model -------------------------
+
+use_bev: true  # Enable BEVDepth for vision-augmented training
+freeze_bev_encoder: true  # Freeze BEV encoder to save GPU memory (only train AgentFormer)
+use_precomputed_bev: true  # Use pre-computed BEV features (skip encoder forward pass)
+model_id: agentformer
+max_train_agent: 8  # Minimal for 6GB GPU with BEV features
+
+# BEVDepth augmentation configurations (minimal resolution for 6GB GPU)
+ida_aug_conf:
+  resize_lim: [0.15, 0.2]  # Further reduced for memory
+  final_dim: [96, 256]     # Minimal resolution for 6GB GPU
+  rot_lim: [-5.4, 5.4]
+  H: 900
+  W: 1600
+  rand_flip: true
+  bot_pct_lim: [0.0, 0.0]
+  cams: ['CAM_FRONT']  # Only front camera for 6GB GPU
+  Ncams: 1
+
+bda_aug_conf:
+  rot_lim: [-22.5, 22.5]
+  scale_lim: [0.95, 1.05]
+  flip_dx_ratio: 0.5
+  flip_dy_ratio: 0.5
+
+# BEV Encoder configuration
+bev_encoder:
+  x_bound: [-50.0, 50.0, 1.0]  # [min, max, resolution] in meters (coarser for memory)
+  y_bound: [-50.0, 50.0, 1.0]
+  z_bound: [-10.0, 10.0, 20.0]
+  d_bound: [2.0, 58.0, 2.0]    # Depth bounds (very coarse for 6GB GPU)
+  final_dim: [96, 256]          # Image resize dimensions (minimal for 6GB GPU)
+  output_channels: 256          # BEV feature channels
+  downsample_factor: 16         # Fixed parameter name
+  use_da: false                 # Disable depth aggregation for simplicity
+  img_backbone_conf:
+    type: 'ResNet'
+    depth: 50
+    num_stages: 4
+    out_indices: [0, 1, 2, 3]
+    frozen_stages: -1
+    norm_cfg:
+      type: 'BN'
+      requires_grad: true
+    norm_eval: false
+    style: 'pytorch'
+  img_neck_conf:
+    type: 'FPN'
+    in_channels: [256, 512, 1024, 2048]
+    out_channels: 256
+    num_outs: 4
+  depth_net_conf:
+    in_channels: 256
+    mid_channels: 256
+
+tf_version: v2
+tf_model_dim: 256
+tf_ff_dim: 512
+tf_nhead: 8
+tf_dropout: 0.1
+input_type: ['scene_norm', 'vel', 'heading', 'map']
+fut_input_type: ['scene_norm', 'vel', 'heading', 'map']
+dec_input_type: ['heading', 'map']
+pred_type: 'scene_norm'
+sn_out_type: 'norm'
+pos_concat: true
+rand_rot_scene: true
+
+use_map: true
+map_encoder:
+  model_id: map_cnn
+  normalize: true
+  hdim: [32, 32, 32, 1]
+  kernels: [5, 5, 5, 3]
+  strides: [2, 2, 1, 1]
+  out_dim: 32
+  dropout: 0.0
+
+context_encoder:
+  nlayer: 2
+
+future_decoder:
+  nlayer: 2
+  out_mlp_dim: [512, 256]
+
+future_encoder:
+  nlayer: 2
+
+# ------------------- VAE-------------------------
+
+nz                           : 32
+sample_k                     : 5
+learn_prior                  : true
+
+# ------------------- Training Parameters -------------------------
+
+lr                           : 1.e-4
+loss_cfg:
+  mse:
+    weight: 1.0
+  kld:
+    weight: 1.0
+    min_clip: 2.0
+  sample:
+    weight: 1.0
+    k: 5
+
+num_epochs                   : 100
+lr_fix_epochs                : 10
+lr_scheduler: 'step'
+decay_step: 10
+decay_gamma: 0.5
+print_freq                   : 20
+model_save_freq              : 10
+
