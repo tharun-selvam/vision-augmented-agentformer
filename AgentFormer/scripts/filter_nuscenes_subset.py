@@ -210,7 +210,7 @@ def filter_nuscenes_metadata(version, dataroot, output_version):
 def main():
     parser = argparse.ArgumentParser(description='Filter nuScenes metadata to match available data')
     parser.add_argument('--dataroot', type=str,
-                        default='/home/tharun/Documents/BTP/AgentFormer/data',
+                        default='/workspace/vision-augmented-agentformer/AgentFormer/nuscenes',
                         help='Path to nuScenes data directory')
     parser.add_argument('--version', type=str, default='v1.0-trainval',
                         help='nuScenes version to filter')

@@ -34,9 +34,13 @@ def train(epoch):
     train_loss_meter = {x: AverageMeter() for x in cfg.loss_cfg.keys()}
     train_loss_meter['total_loss'] = AverageMeter()
     last_generator_index = 0
+    batch_count = 0
     while not generator.is_epoch_end():
         data = generator()
         if data is not None:
+            batch_count += 1
+            if batch_count % 10 == 1:  # Log every 10 batches
+                print_log(f"[DEBUG] Processing batch {batch_count}...", log)
             model.set_data(data)
             model.forward()
             total_loss, loss_dict, loss_unweighted_dict = model.compute_loss()
@@ -89,12 +93,18 @@ if __name__ == '__main__':
     tb_ind = 0
 
     """ data """
+    print_log("[DEBUG] Creating data generator...", log)
     generator = data_generator(cfg, log, split='train', phase='training')
+    print_log("[DEBUG] Data generator created successfully", log)
 
     """ model """
+    print_log("[DEBUG] Initializing model...", log)
     model_id = cfg.get('model_id', 'agentformer')
     model = model_dict[model_id](cfg)
+    print_log("[DEBUG] Model initialized successfully", log)
+    print_log("[DEBUG] Creating optimizer...", log)
     optimizer = optim.Adam(model.parameters(), lr=cfg.lr)
+    print_log("[DEBUG] Optimizer created", log)
     scheduler_type = cfg.get('lr_scheduler', 'linear')
     if scheduler_type == 'linear':
         scheduler = get_scheduler(optimizer, policy='lambda', nepoch_fix=cfg.lr_fix_epochs, nepoch=cfg.num_epochs)
@@ -114,9 +124,13 @@ if __name__ == '__main__':
             scheduler.load_state_dict(model_cp['scheduler_dict'])
 
     """ start training """
+    print_log("[DEBUG] Moving model to device...", log)
     model.set_device(device)
+    print_log("[DEBUG] Setting model to training mode...", log)
     model.train()
+    print_log("[DEBUG] Starting training loop for {} epochs...".format(cfg.num_epochs - args.start_epoch), log)
     for i in range(args.start_epoch, cfg.num_epochs):
+        print_log("[DEBUG] ===== Starting Epoch {}/{} =====".format(i+1, cfg.num_epochs), log)
         train(i)
         """ save model """
         if cfg.model_save_freq > 0 and (i + 1) % cfg.model_save_freq == 0:

@@ -186,7 +186,10 @@ class ContextEncoder(nn.Module):
 
         # Integrate BEV features if available
         if 'bev_feature_map' in data and data['bev_feature_map'] is not None:
-            bev_feature_map = data['bev_feature_map']  # [B, C, H, W]
+            bev_feature_map = data['bev_feature_map']  # [B, C, H, W] or [B, C, 1, H, W]
+            # Squeeze extra dimension if present (from BEV encoder output with sweep dimension)
+            if len(bev_feature_map.shape) == 5:
+                bev_feature_map = bev_feature_map.squeeze(2)  # [B, C, H, W]
             bev_fusion_module = data['bev_fusion_module']
 
             # Get agent positions in world coordinates

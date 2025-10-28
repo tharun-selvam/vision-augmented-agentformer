@@ -24,7 +24,7 @@ forecast_dim                 : 2
 use_bev: false  # Explicitly disable BEVDepth for baseline training
 model_id: dlow
 pred_cfg: nuscenes_5sample_agentformer_pre
-pred_epoch: 100
+pred_epoch: 30
 qnet_mlp: [512, 256]
 share_eps: true
 train_w_mean: true

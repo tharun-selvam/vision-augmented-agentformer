@@ -6,6 +6,7 @@ Modified version of PyTorch Transformer module for the implementation of Agent-A
 import warnings
 import math
 import copy
+from typing import Tuple, Optional
 
 import torch
 from torch.nn import functional as F

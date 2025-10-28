@@ -165,7 +165,7 @@ def get_available_scenes(nusc):
 def main():
     parser = argparse.ArgumentParser(description='Generate nuScenes info files for subset')
     parser.add_argument('--dataroot', type=str,
-                        default='/home/tharun/Documents/BTP/AgentFormer/data',
+                        default='/workspace/vision-augmented-agentformer/AgentFormer/nuscenes',
                         help='Path to nuScenes data directory')
     parser.add_argument('--version', type=str, default='v1.0-trainval-subset',
                         help='nuScenes version to use')

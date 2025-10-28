@@ -54,11 +54,15 @@ class data_generator(object):
                 info_paths = os.path.join(data_root, f'nuscenes_infos_{split}.pkl')
                 print_log(f'Initializing BEV dataset for image features with full dataset: {info_paths}', log)
 
+            # Determine the correct nuscenes data root
+            # data_root is 'datasets/nuscenes_pred', we need 'nuscenes'
+            nuscenes_data_root = 'nuscenes'
+
             self.nusc_det_dataset = NuscDetDataset(
                 ida_aug_conf=parser.ida_aug_conf,
                 bda_aug_conf=parser.bda_aug_conf,
                 classes=parser.object_classes,
-                data_root='/home/tharun/Documents/BTP/AgentFormer/nuscenes',
+                data_root=nuscenes_data_root,
                 info_paths=info_paths,
                 is_train=(split == 'train'),
                 img_conf=parser.img_conf,

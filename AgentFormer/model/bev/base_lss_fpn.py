@@ -298,7 +298,7 @@ class DepthNet(nn.Module):
                 kernel_size=3,
                 padding=1,
                 groups=4,
-                im2col_step=128,
+                im2col_step=1,  # Changed to 1 for maximum flexibility with any batch size
             )),
             nn.Conv2d(mid_channels,
                       depth_channels,
