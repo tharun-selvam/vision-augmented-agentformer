@@ -49,8 +49,4 @@ ops/
 2025-*.txt
 
 # Pre-computed BEV features (too large for git)
-bev_features/
-*.pt
-
-# BEVDepth directory (clone separately)
-bevdepth/
+bev_features/*.tar.gz
