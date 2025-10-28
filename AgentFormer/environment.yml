@@ -1,0 +1,7 @@
+name: agentformer_py310
+channels:
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+prefix: /venv/agentformer_py310
