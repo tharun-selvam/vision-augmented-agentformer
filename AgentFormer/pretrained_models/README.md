@@ -12,10 +12,24 @@ Trained without BEV visual features using only trajectory history and HD map.
 
 ### Available Models
 
-| Model | Epochs | Size | Description |
-|-------|--------|------|-------------|
-| `vanilla/stage1_epoch30.p` | 30 | 74MB | Stage 1: VAE pre-training |
-| `vanilla/stage2_epoch50.p` | 50 | 4.0MB | Stage 2: Full model with DLow sampler |
+**Stage 1 (VAE Pre-training):** `vanilla/stage1/`
+- `model_0010.p` - Epoch 10 (74MB)
+- `model_0020.p` - Epoch 20 (74MB)
+- `model_0030.p` - Epoch 30 (74MB) ⭐ Best
+
+**Stage 2 (Full Model with DLow):** `vanilla/stage2/`
+- `model_0005.p` - Epoch 5 (4.0MB)
+- `model_0010.p` - Epoch 10 (4.0MB)
+- `model_0015.p` - Epoch 15 (4.0MB)
+- `model_0020.p` - Epoch 20 (4.0MB)
+- `model_0025.p` - Epoch 25 (4.0MB)
+- `model_0030.p` - Epoch 30 (4.0MB)
+- `model_0035.p` - Epoch 35 (4.0MB)
+- `model_0040.p` - Epoch 40 (4.0MB)
+- `model_0045.p` - Epoch 45 (4.0MB)
+- `model_0050.p` - Epoch 50 (4.0MB) ⭐ Best
+
+**Total Size:** 337MB (13 checkpoints)
 
 ### Usage
 
@@ -70,11 +84,20 @@ Visit: https://github.com/tharun-selvam/vision-augmented-agentformer/releases
 pretrained_models/
 ├── README.md
 ├── vanilla/
-│   ├── stage1_epoch30.p  # VAE pre-training checkpoint
-│   └── stage2_epoch50.p  # Full model checkpoint
+│   ├── stage1/           # VAE pre-training checkpoints
+│   │   ├── model_0010.p
+│   │   ├── model_0020.p
+│   │   └── model_0030.p
+│   ├── stage2/           # Full model checkpoints
+│   │   ├── model_0005.p
+│   │   ├── model_0010.p
+│   │   ├── ...
+│   │   └── model_0050.p
+│   ├── stage1_epoch30.p  # Symlink to best Stage 1
+│   └── stage2_epoch50.p  # Symlink to best Stage 2
 └── bev/                  # Coming soon
-    ├── stage1_epoch30.p
-    └── stage2_epoch50.p
+    ├── stage1/
+    └── stage2/
 ```
 
 ## Model Format
