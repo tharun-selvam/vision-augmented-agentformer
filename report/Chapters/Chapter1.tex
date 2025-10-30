@@ -1,0 +1,36 @@
+% Chapter Template
+
+\chapter{Introduction} % Main chapter title
+
+\label{Chapter1} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 1. \emph{Introduction}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%\tSECTION 1
+%---------------------------------------------------------------------------------------
+\section{Introduction and Motivation}
+
+\subsection{The Big Picture}
+
+The pursuit of fully autonomous driving has become one of the most significant and challenging endeavors in modern engineering. A critical component of any autonomous system is the ability to perceive its environment and anticipate the future actions of other agents. Accurate and reliable motion forecasting is paramount for ensuring the safety and efficiency of autonomous vehicles. By predicting the future trajectories of surrounding vehicles, pedestrians, and cyclists, an autonomous car can make informed decisions, plan safe paths, and avoid potential collisions.
+
+\subsection{Problem Definition}
+
+Multi-agent motion forecasting in dynamic and interactive environments is a complex problem. The future trajectory of an agent is not only influenced by its own past motion but also by its interactions with other agents and its understanding of the surrounding scene. A robust motion forecasting system must be able to model these complex dependencies to generate accurate and socially compliant predictions. The challenges are manifold, including but not limited to:
+
+\begin{itemize}
+    \item Modeling the interactions between multiple agents.
+    \item Incorporating scene context, such as lane geometry, traffic lights, and static obstacles.
+    \item Handling the inherent uncertainty and multi-modality of future movements.
+\end{itemize}
+
+\subsection{The Motivation}
+
+To address these challenges, recent research has focused on developing deep learning models that can learn complex patterns from large-scale datasets. AgentFormer is a state-of-the-art motion forecasting model that has demonstrated excellent performance in modeling agent interactions using a transformer-based architecture. However, AgentFormer primarily relies on trajectory information and has a limited understanding of the rich visual context of the scene.
+
+On the other hand, Bird's-Eye-View (BEV) representations have emerged as a powerful way to represent the 3D world for autonomous driving tasks. BEVDepth is a model that can generate dense and detailed BEV feature maps from multiple camera images, capturing the geometry and semantics of the scene. The central hypothesis of this thesis is that by integrating the rich visual context from BEVDepth into the AgentFormer model, we can improve its motion forecasting accuracy.
+
+This work explores the integration of these two powerful models. The motivation is to provide AgentFormer with a more comprehensive understanding of the scene, enabling it to make more informed predictions. We hypothesized that the BEV features would provide crucial information about lane boundaries, crosswalks, traffic lights, and other static and dynamic elements of the scene that are not available from trajectory data alone.
+
+However, the results of our experiments were surprising. The integration of BEV features, contrary to our initial hypothesis, led to a degradation in the performance of the AgentFormer model. This thesis will detail the methodology of the integration, present the results, and, most importantly, provide a thorough analysis of the potential reasons for this unexpected outcome. By investigating why the integration failed, we aim to provide valuable insights for future research on multi-modal fusion in motion forecasting.

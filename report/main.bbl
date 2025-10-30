@@ -1,0 +1,40 @@
+\begin{thebibliography}{}
+
+\bibitem[Caesar et~al., 2020]{caesar2020nuscenes}
+Caesar, H., Bankiti, V., Lang, A.~H., Vora, S., Liong, V.~E., Xu, Q., Krishnan,
+  A., Pan, Y., Baldan, G., and Beijbom, O. (2020).
+\newblock nuscenes: A multimodal dataset for autonomous driving.
+\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
+  pattern recognition}, pages 11621--11631.
+
+\bibitem[Ding et~al., 2022]{Ding2022DeepLW}
+Ding, G., Georgilas, I., and Plummer, A. (2022).
+\newblock Deep learning with an attention mechanism for continuous
+  biomechanical motion estimation across varied activities.
+\newblock {\em Frontiers in Bioengineering and Biotechnology}, 10.
+
+\bibitem[Li et~al., 2022]{li2022bevdepth}
+Li, Y., Ge, Z., Yu, G., Yang, J., Wang, Z., Shi, Y., Sun, J., and Li, Z.
+  (2022).
+\newblock Bevdepth: Acquisition of reliable depth for multi-view 3d object
+  detection.
+\newblock {\em arXiv preprint arXiv:2206.10092}.
+
+\bibitem[Mao et~al., 2021]{Mao2021Multi-levelMA}
+Mao, W., Liu, M., Salzmann, M., and Li, H. (2021).
+\newblock Multi-level motion attention for human motion prediction.
+\newblock {\em arXiv:2106.09300}.
+
+\bibitem[Shi et~al., 2025]{Shi2025MotionFF}
+Shi, J., Shi, Y., Li, Y., Li, Y., Li, Y., Li, Y., and Li, Y. (2025).
+\newblock Motion forecasting for autonomous vehicles: A survey.
+\newblock {\em arXiv:2502.08664}.
+
+\bibitem[Yuan et~al., 2021]{yuan2021agentformer}
+Yuan, Y., Weng, X., and Kitani, K. (2021).
+\newblock Agentformer: Agent-aware transformers for socio-temporal multi-agent
+  forecasting.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition (CVPR)}, pages 12507--12516.
+
+\end{thebibliography}

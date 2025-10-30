@@ -1,0 +1,886 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(/workspace/vision-augmented-agentformer/report/main.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(/workspace/vision-augmented-agentformer/report/Thesis.cls
+Document Class: Thesis 2007/22/02 v1.0 LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/vmargin/vmargin.sty
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amscd.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/tabu/tabu.sty
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/soul/soul.sty
+(/usr/share/texlive/texmf-dist/tex/generic/soul/soul-ori.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def)
+(/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.cfg))
+(/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/umoline/umoline.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.sty
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+(/workspace/vision-augmented-agentformer/report/lstpatch.sty
+
+***
+*** This is a patch for `listings.sty' version 1.0, but
+*** you're using version 1.9.
+***
+*** Patch file not loaded.
+***
+
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+
+LaTeX Warning: Command \@parboxrestore  has changed.
+               Check if current package is valid.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/stackengine/stackengine.sty
+(/usr/share/texlive/texmf-dist/tex/generic/listofitems/listofitems.sty
+(/usr/share/texlive/texmf-dist/tex/generic/listofitems/listofitems.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/numprint/numprint.sty
+No configuration file `numprint.cfg' found.)
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(/workspace/vision-augmented-agentformer/report/main.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/workspace/vision-augmented-agentformer/report/main.out)
+(/workspace/vision-augmented-agentformer/report/main.out)
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
+nary-english.trsl)
+------------------------------------------------------------------------------
+ Title Page
+------------------------------------------------------------------------------
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </workspace/vision-augmen
+ted-agentformer/report/Pictures/logo.jpg>]
+------------------------------------------------------------------------------
+ Declaration
+------------------------------------------------------------------------------
+[1]
+------------------------------------------------------------------------------
+ Certificate Page
+------------------------------------------------------------------------------
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [2]
+------------------------------------------------------------------------------
+ Abstract Page
+------------------------------------------------------------------------------
+[3]
+------------------------------------------------------------------------------
+ Acknowledgements
+------------------------------------------------------------------------------
+[4]
+------------------------------------------------------------------------------
+ Table of Contents
+------------------------------------------------------------------------------
+(/workspace/vision-augmented-agentformer/report/main.toc [5]) [6]
+------------------------------------------------------------------------------
+ List of Figures
+------------------------------------------------------------------------------
+(/workspace/vision-augmented-agentformer/report/main.lof) [7]
+------------------------------------------------------------------------------
+ List of Tables
+------------------------------------------------------------------------------
+(/workspace/vision-augmented-agentformer/report/main.lot
+Overfull \hbox (10.96121pt too wide) in paragraph at lines 6--6
+ [][] [][]\OT1/cmr/m/n/12 Performance com-par-i-son of base-line Agent-Former a
+nd vision-augmented 
+) [8]
+------------------------------------------------------------------------------
+ Abbreviations
+------------------------------------------------------------------------------
+[9]
+------------------------------------------------------------------------------
+ Symbols
+------------------------------------------------------------------------------
+[10] (/workspace/vision-augmented-agentformer/report/Chapters/Chapter1.tex
+Chapter 1.
+------------------------------------------------------------------------------
+ 1 Introduction
+------------------------------------------------------------------------------
+[1] [2{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}])
+(/workspace/vision-augmented-agentformer/report/Chapters/Chapter2.tex [3]
+Chapter 2.
+------------------------------------------------------------------------------
+ 2 Literature Review
+------------------------------------------------------------------------------
+[4]
+
+Package natbib Warning: Citation `yuan2021agentformer' on page 5 undefined on i
+nput line 30.
+
+[5]
+
+Package natbib Warning: Citation `li2022bevdepth' on page 6 undefined on input 
+line 50.
+
+[6]
+! Undefined control sequence.
+l.69 \bibentry
+              {yuan2021agentformer}
+? ! Undefined control sequence.
+l.70 \bibentry
+              {li2022bevdepth}
+? ) (/workspace/vision-augmented-agentformer/report/Chapters/Chapter3.tex
+[7]
+Chapter 3.
+------------------------------------------------------------------------------
+ 3 Methodology
+------------------------------------------------------------------------------
+[8 </workspace/vision-augmented-agentformer/report/Pictures/system_overview.png
+>]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.41 ...d AgentFormer is defined in the `nuscenes_
+                                                  5sample_agentformer_bev.ym...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.42 
+     
+? 
+Overfull \hbox (757.33112pt too wide) in paragraph at lines 41--42
+\OT1/cmr/m/n/12 The con-fig-u-ra-tion for the vision-augmented Agent-Former is 
+de-fined in the `nuscenes$[]\OML/cmm/m/it/12 sample[]gentformer[]ev:yml\OT1/cmr
+/m/n/12 `\OML/cmm/m/it/12 file:ThisfilecontrolstheintegrationoftheBEVfeaturesan
+dthebehaviorofthemodel:Keyparametersinthisfileinclude \OT1/cmr/m/n/12 :$ 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.44     \item \texttt{use_bev: true}
+                                     : This flag enables the use of BEV feat...
+
+? ! Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.44     \item \texttt{use_bev: true}
+                                     : This flag enables the use of BEV feat...
+
+? 
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.45     \item
+               \texttt{freeze_bev_encoder: true}: This parameter freezes the...
+
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.45     \item \texttt
+                      {freeze_bev_encoder: true}: This parameter freezes the...
+
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.45     \item \texttt
+                      {freeze_bev_encoder: true}: This parameter freezes the...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
+                                                  }
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
+                                                  
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\text@ ...e {\textdef@ \displaystyle \f@size {#1}}
+                                                  {\textdef@ \textstyle \f@s...
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
+                                                  }
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
+                                                  
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\text@ ...xtstyle \f@size {\firstchoice@false #1}}
+                                                  {\textdef@ \textstyle \sf@...
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
+                                                  }
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
+                                                  
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\text@ ...tstyle \sf@size {\firstchoice@false #1}}
+                                                  {\textdef@ \textstyle \ssf...
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
+                                                  }
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
+                                                  
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\text@ ...style \ssf@size {\firstchoice@false #1}}
+                                                  \check@mathfonts }
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Extra }, or forgotten $.
+\text@ ...firstchoice@false #1}}\check@mathfonts }
+                                                  
+l.45     \item \texttt{freeze_bev_encoder: true}
+                                                : This parameter freezes the...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.46     \item \texttt
+                      {use_precomputed_bev: true}: This option allows the us...
+
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.46     \item \texttt
+                      {use_precomputed_bev: true}: This option allows the us...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.46     \item \texttt{use_precomputed_bev: true}
+                                                 : This option allows the us...
+
+? ! Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.46     \item \texttt{use_precomputed_bev: true}
+                                                 : This option allows the us...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing { inserted.
+<to be read again> 
+                   \endgroup 
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing { inserted.
+<to be read again> 
+                   \endgroup 
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing { inserted.
+<to be read again> 
+                   \endgroup 
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.47 \end{itemize}
+                  
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.47 \end{itemize}
+                  
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.49 ... encoder itself is defined in the `vision_
+                                                  agentformer.py` configurat...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.50 
+     
+? 
+Overfull \hbox (620.57906pt too wide) in paragraph at lines 49--50
+[]\OT1/cmr/m/n/12 The ar-chi-tec-ture of the BEV en-coder it-self is de-fined i
+n the `vision$[]\OML/cmm/m/it/12 gentformer:py\OT1/cmr/m/n/12 `\OML/cmm/m/it/12
+ configurationfile; whichisreferencedbythemain\OT1/cmr/m/n/12 `\OML/cmm/m/it/12
+ :yml\OT1/cmr/m/n/12 `\OML/cmm/m/it/12 config:Thisincludesthedefinitionofthebac
+kbonenetwork\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ResNet \OMS/cmsy/m/n/12 ^^@
+
+Overfull \hbox (39.34198pt too wide) in paragraph at lines 49--50
+\OT1/cmr/m/n/12 50)\OML/cmm/m/it/12 ; theneck\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+FPN\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; andthedepthnetwork; whichareallcomponent
+softheBEVDepthmodel:$ 
+[9]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.57 The `AgentFormer` class's `_
+                                 _init__` method checks for the `use_bev` fl...
+
+? ! Missing { inserted.
+<to be read again> 
+                   _
+l.57 The `AgentFormer` class's `__
+                                  init__` method checks for the `use_bev` fl...
+
+? ! Missing { inserted.
+<to be read again> 
+                   _
+l.57 The `AgentFormer` class's `__init__
+                                        ` method checks for the `use_bev` fl...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.58 
+     
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.58 
+     
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.58 
+     
+? 
+Overfull \hbox (67.86368pt too wide) in paragraph at lines 57--58
+\OT1/cmr/m/n/12 The `Agent-Former` class's `$[]$ 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.60 ...e `BaseLSSFPN` class from `model/bev/base_
+                                                  lss_fpn.py` is imported an...
+
+? 
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61     \item
+               A fusion module, `self.bev_fusion_module`, is created. This i...
+
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61     \item A
+                 fusion module, `self.bev_fusion_module`, is created. This i...
+
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61     \item A
+                 fusion module, `self.bev_fusion_module`, is created. This i...
+
+? 
+! LaTeX Error: Command \end{enumerate} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.62 \end{enumerate}
+                    
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.62 \end{enumerate}
+                    
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.62 \end{enumerate}
+                    
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.62 \end{enumerate}
+                    
+? 
+Overfull \hbox (583.62756pt too wide) in paragraph at lines 60--63
+[]\OT1/cmr/m/n/12 The `BaseLSSFPN` class from `model/bev/base$[]\OML/cmm/m/it/1
+2 ss[]pn:py\OT1/cmr/m/n/12 `\OML/cmm/m/it/12 isimportedandusedtoinitializetheBE
+Vencoder\OT1/cmr/m/n/12 (`\OML/cmm/m/it/12 self:bev[]ncoder\OT1/cmr/m/n/12 `)\O
+ML/cmm/m/it/12 :[][]Afusionmodule; \OT1/cmr/m/n/12 `\OML/cmm/m/it/12 self:bev[]
+usion[]odule\OT1/cmr/m/n/12 `\OML/cmm/m/it/12 ; iscreated:ThisisasimpleMulti \O
+MS/cmsy/m/n/12 ^^@
+
+Overfull \hbox (54.21555pt too wide) in paragraph at lines 60--63
+\OML/cmm/m/it/12 LayerPerceptron\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 MLP\OT1/cmr/m
+/n/12 )\OML/cmm/m/it/12 designedtofusetheBEVfeatureswiththeagent[]strajectoryfe
+atures:$ 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.64 ...files or extracted on-the-fly by the `bev_
+                                                  encoder`. These features a...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.65 
+     
+? 
+Overfull \hbox (187.54797pt too wide) in paragraph at lines 64--65
+\OT1/cmr/m/n/12 from pre-computed files or ex-tracted on-the-fly by the `bev$[]
+\OML/cmm/m/it/12 ncoder\OT1/cmr/m/n/12 `\OML/cmm/m/it/12 :Thesefeaturesarethenp
+assedtothe\OT1/cmr/m/n/12 `\OML/cmm/m/it/12 ContextEncoder\OT1/cmr/m/n/12 `\OML
+/cmm/m/it/12 :$ 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.71     \item The method checks if a `bev_
+                                           feature_map` is available in the ...
+
+? 
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.72     \item
+               If BEV features are present, the model samples features from ...
+
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.72     \item I
+                f BEV features are present, the model samples features from ...
+
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.72     \item I
+                f BEV features are present, the model samples features from ...
+
+? 
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73     \item
+               The sampled BEV features are then concatenated with the agent...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.73     \item T
+                he sampled BEV features are then concatenated with the agent...
+
+? ! Missing } inserted.
+<inserted text> 
+                }
+l.73     \item T
+                he sampled BEV features are then concatenated with the agent...
+
+? 
+Overfull \hbox (1289.00438pt too wide) in paragraph at lines 71--73
+[]\OT1/cmr/m/n/12 The method checks if a `bev$[]\OML/cmm/m/it/12 eature[]ap\OT1
+/cmr/m/n/12 `\OML/cmm/m/it/12 isavailableintheinputdata:[][]IfBEVfeaturesarepre
+sent; themodelsamplesfeaturesfromtheBEVmapatthe\OT1/cmr/m/n/12 2\OML/cmm/m/it/1
+2 Dlocationofeachagentforeachtimestepinitspasttrajectory:Thisisachievedusingthe
+\OT1/cmr/m/n/12 `\OML/cmm/m/it/12 grid[]ample\OT1/cmr/m/n/12 `\OML/cmm/m/it/12 
+functionfromPyTorch; whichallowsfordifferentiablesamplingfromafeaturemap:[][]$ 
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.73     \item T
+                he sampled BEV features are then concatenated with the agent...
+
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.74 ...ated features are passed through the `bev_
+                                                  fusion_module` (the MLP) t...
+
+? 
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75     \item
+               This fused feature vector is then used as the input to the Ag...
+
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75     \item T
+                his fused feature vector is then used as the input to the Ag...
+
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75     \item T
+                his fused feature vector is then used as the input to the Ag...
+
+? 
+! LaTeX Error: Command \end{enumerate} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.76 \end{enumerate}
+                    
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.76 \end{enumerate}
+                    
+? 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.76 \end{enumerate}
+                    
+? ! Missing $ inserted.
+<inserted text> 
+                $
+l.76 \end{enumerate}
+                    
+? 
+Overfull \hbox (1311.69553pt too wide) in paragraph at lines 74--77
+[]\OT1/cmr/m/n/12 The con-cate-nated fea-tures are passed through the `bev$[]\O
+ML/cmm/m/it/12 usion[]odule\OT1/cmr/m/n/12 `(\OML/cmm/m/it/12 theMLP\OT1/cmr/m/
+n/12 )\OML/cmm/m/it/12 toproduceafusedfeaturevector:[][]Thisfusedfeaturevectori
+sthenusedastheinputtotheAgentFormer[]stransformerencoder; allowingthemodeltorea
+sonabouttheagent[]sfuturemotionbasedonbothitspasttrajectoryandthesurroundingvis
+ualcontextfromtheBEVmap:$ 
+) (/workspace/vision-augmented-agentformer/report/Chapters/Chapter4.tex
+[10]
+Chapter 4.
+------------------------------------------------------------------------------
+ 4 Results and Discussion
+------------------------------------------------------------------------------
+
+Overfull \hbox (7.01396pt too wide) in paragraph at lines 14--15
+\OT1/cmr/m/n/12 The per-for-mance of the vision-augmented Agent-Former was eval
+-u-ated on the nuScenes
+[11] [12])
+(/workspace/vision-augmented-agentformer/report/Chapters/Chapter5.tex [13]
+[14]
+Chapter 5.
+------------------------------------------------------------------------------
+ 5 Conclusion and Future Works
+------------------------------------------------------------------------------
+[15] [16])
+(/workspace/vision-augmented-agentformer/report/Appendices/AppendixA.tex
+[17]
+Appendix A.
+------------------------------------------------------------------------------
+ A Appendix A
+------------------------------------------------------------------------------
+) [18]
+------------------------------------------------------------------------------
+ Bibliography
+------------------------------------------------------------------------------
+No file main.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+(/workspace/vision-augmented-agentformer/report/main.aux) )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 112 ({)
+### bottom level</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12
+.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/tex
+mf/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on /workspace/vision-augmented-agentformer/report/main.pdf (29 p
+ages, 532822 bytes).
+Transcript written on /workspace/vision-augmented-agentformer/report/main.log.

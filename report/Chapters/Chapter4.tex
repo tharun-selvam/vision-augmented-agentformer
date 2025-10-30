@@ -75,7 +75,7 @@ By using the pre-computed features, the training process is significantly accele
 \toprule
 \textbf{Model} & \textbf{ADE} & \textbf{FDE} \\
 \midrule
-Baseline AgentFormer & X.XX & Y.YY \\
+Baseline AgentFormer & 4.8110 & 9.5486 \\
 Vision-Augmented AgentFormer & 5.1939 & 11.0132 \\
 \bottomrule
 \end{tabular}
@@ -83,7 +83,18 @@ Vision-Augmented AgentFormer & 5.1939 & 11.0132 \\
 
 As shown in Table \ref{tab:results}, the vision-augmented AgentFormer performed worse than the baseline model on both ADE and FDE metrics. This result is counter-intuitive, as the addition of visual information was expected to improve the model's performance. The following section provides a detailed analysis of the potential reasons for this performance degradation.
 
-\subsection{Training Loss Curves}
+\subsection{Vanilla Model Training Loss}
+
+Figure \ref{fig:loss_curves_vanilla} shows the training loss curves for the baseline AgentFormer model. The plots show the average loss per epoch for the total loss, KLD loss, reconstruction loss, and diversity loss.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{epoch_loss_curves_vanilla.png}
+\caption{Average training loss per epoch for the baseline AgentFormer (Vanilla).}
+\label{fig:loss_curves_vanilla}
+\end{figure}
+
+\subsection{BEV-Augmented Model Training Loss}
 
 Figure \ref{fig:loss_curves_bev} shows the training loss curves for the vision-augmented AgentFormer model. The plots show the average loss per epoch for the total loss, KLD loss, MSE loss, and sample loss.
 
@@ -102,6 +113,14 @@ Figure \ref{fig:loss_curves_bev} shows the training loss curves for the vision-a
 \end{itemize}
 
 The analysis of the loss curves provides further evidence for the suboptimal performance of the vision-augmented model. The instability in the MSE loss suggests that the model is not able to effectively integrate the visual information from the BEV features. The high variance in the loss indicates that for some training examples, the BEV features are helpful, while for others they are detrimental, leading to a high overall error. This is a strong indication that the fusion mechanism is not robust enough to handle the complexity of the multi-modal input.
+
+\subsection{Comparative Analysis of Training Loss}
+
+A comparison of the training loss curves for the vanilla and BEV-augmented models reveals a key difference in the training dynamics. While both models show a similar trend in the KLD and diversity/sample losses, the reconstruction/MSE loss behaves very differently.
+
+The vanilla model's reconstruction loss shows a stable and consistent decrease, indicating that the model is effectively learning to reconstruct the ground truth trajectories. In contrast, the BEV-augmented model's MSE loss is highly volatile and fluctuates significantly throughout the training process. This suggests that the introduction of BEV features introduces a significant amount of noise and instability into the training process.
+
+The higher and more unstable MSE loss of the BEV-augmented model is the primary reason for its worse performance compared to the vanilla model. The model is not able to effectively leverage the visual information from the BEV features and, in many cases, this information seems to be detrimental to the learning process. This further supports the hypothesis that a simple fusion mechanism is not sufficient to effectively combine the rich and dense BEV features with the sparse trajectory data.
 
 \section{Analysis of Negative Results}
 

@@ -3,7 +3,11 @@ import torch
 import torch.nn.functional as F
 from mmcv.cnn import build_conv_layer
 # Direct imports - avoid registry complications
-from mmdet3d.models.necks import FPN
+# Use mmdet's FPN instead of mmdet3d to avoid CUDA extension issues
+try:
+    from mmdet3d.models.necks import FPN
+except ImportError:
+    from mmdet.models.necks import FPN
 from mmdet.models.backbones import ResNet
 
 def build_neck(cfg):

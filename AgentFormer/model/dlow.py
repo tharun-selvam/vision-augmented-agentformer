@@ -6,6 +6,7 @@ from utils.config import Config
 from .common.mlp import MLP
 from .common.dist import *
 from . import model_lib
+from .agentformer_loss import compute_motion_mse, compute_sample_loss
 
 
 def compute_z_kld(data, cfg):
@@ -48,6 +49,8 @@ loss_func = {
     'kld': compute_z_kld,
     'diverse': diversity_loss,
     'recon': recon_loss,
+    'mse': compute_motion_mse,
+    'sample': compute_sample_loss,
 }
 
 
@@ -113,6 +116,8 @@ class DLow(nn.Module):
         logvar = (A ** 2 + 1e-8).log()
         self.data['q_z_dist_dlow'] = Normal(mu=b, logvar=logvar)
 
+        # Generate both training and inference predictions
+        pred_model.future_decoder(self.data, mode='train', sample_num=1, autoregress=True, z=b[:self.data['agent_num']], need_weights=need_weights)
         pred_model.future_decoder(self.data, mode='infer', sample_num=self.nk, autoregress=True, z=z, need_weights=need_weights)
         return self.data
     

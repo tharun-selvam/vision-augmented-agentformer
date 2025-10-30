@@ -1,0 +1,15 @@
+--2025-10-28 21:47:00--  https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https%3A%2F%2Fcodeassist.google.com%2Fauthcode
+Resolving accounts.google.com (accounts.google.com)... 74.125.136.84, 2607:f8b0:4002:c00::54
+Connecting to accounts.google.com (accounts.google.com)|74.125.136.84|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://accounts.google.com/signin/oauth/error?authError=Cg9pbnZhbGlkX3JlcXVlc3QSLFJlcXVpcmVkIHBhcmFtZXRlciBpcyBtaXNzaW5nOiByZXNwb25zZV90eXBlGjdodHRwczovL2RldmVsb3BlcnMuZ29vZ2xlLmNvbS9pZGVudGl0eS9wcm90b2NvbHMvb2F1dGgyIJAD&flowName=GeneralOAuthFlow [following]
+--2025-10-28 21:47:00--  https://accounts.google.com/signin/oauth/error?authError=Cg9pbnZhbGlkX3JlcXVlc3QSLFJlcXVpcmVkIHBhcmFtZXRlciBpcyBtaXNzaW5nOiByZXNwb25zZV90eXBlGjdodHRwczovL2RldmVsb3BlcnMuZ29vZ2xlLmNvbS9pZGVudGl0eS9wcm90b2NvbHMvb2F1dGgyIJAD&flowName=GeneralOAuthFlow
+Reusing existing connection to accounts.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘auth?redirect_uri=https:%2F%2Fcodeassist.google.com%2Fauthcode’
+
+                     auth?redirect_uri=htt     [<=>                                                                                    ]       0  --.-KB/s               auth?redirect_uri=https:%2F%2Fcodeassist.g     [ <=>                                                                                   ]   3.28M  --.-KB/s    in 0.08s   
+
+2025-10-28 21:47:00 (41.9 MB/s) - ‘auth?redirect_uri=https:%2F%2Fcodeassist.google.com%2Fauthcode’ saved [3440731]
+

@@ -30,7 +30,7 @@ use_precomputed_bev: true  # Use pre-computed BEV features
 model_id: dlow
 pred_cfg: nuscenes_5sample_agentformer_pre_bev
 pred_epoch: 30
-max_train_agent: 8  # Minimal for 6GB GPU with BEV features
+max_train_agent: 64  # Increased to fully utilize RTX 5090's 32GB VRAM
 
 # BEVDepth augmentation configurations (optimized: 3 cams + lower res)
 ida_aug_conf:
@@ -41,8 +41,8 @@ ida_aug_conf:
   W: 1600
   rand_flip: true
   bot_pct_lim: [0.0, 0.0]
-  cams: ['CAM_FRONT', 'CAM_FRONT_LEFT', 'CAM_FRONT_RIGHT']  # 180° FOV
-  Ncams: 3
+  cams: ['CAM_FRONT']  # Single camera to match Stage 1 pretraining
+  Ncams: 1
 
 bda_aug_conf:
   rot_lim: [-22.5, 22.5]
@@ -132,7 +132,7 @@ loss_cfg:
     weight: 1.0
     k: 5
 
-num_epochs                   : 100
+num_epochs                   : 50
 lr_fix_epochs                : 10
 lr_scheduler: 'step'
 decay_step: 10

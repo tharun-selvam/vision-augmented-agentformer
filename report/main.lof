@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Overview of the AgentFormer-based multi-agent trajectory prediction framework. Figure from \citep {yuan2021agentformer}.}}{7}{figure.caption.26}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces A sample from the nuScenes dataset, showing the 6 camera views (top), along with Lidar and Radar point clouds (bottom left/middle) and the semantic map (bottom right). This full sensor suite provides a comprehensive view of the driving scene. (Image from \citep {caesar2020nuscenes})}}{12}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Examples of the diverse conditions in nuScenes, including: (col 1) clear weather, (col 2) nighttime, (col 3) rain, and (col 4) construction zones. (Image from \citep {caesar2020nuscenes})}}{13}{figure.caption.38}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces High-level overview of the integrated BEVDepth and AgentFormer model.}}{14}{figure.caption.41}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Average training loss per epoch for the baseline AgentFormer (Vanilla).}}{22}{figure.caption.69}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Average training loss per epoch for the vision-augmented AgentFormer (BEV).}}{23}{figure.caption.71}%
+\addvspace {10\p@ }

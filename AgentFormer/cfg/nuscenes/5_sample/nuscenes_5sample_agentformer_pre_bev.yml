@@ -26,9 +26,9 @@ forecast_dim                 : 2
 
 use_bev: true  # Enable BEVDepth for vision-augmented training
 freeze_bev_encoder: true  # Freeze BEV encoder to save GPU memory (only train AgentFormer)
-use_precomputed_bev: false  # Extract BEV features on-the-fly during training
+use_precomputed_bev: true  # Use precomputed BEV features for faster training
 model_id: agentformer
-max_train_agent: 16  # Increased from 8 for faster training (we have 32GB VRAM)
+max_train_agent: 64  # Increased to fully utilize RTX 5090's 32GB VRAM
 
 # BEVDepth augmentation configurations (optimized: 3 cams + lower res)
 ida_aug_conf:

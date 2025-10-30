@@ -4,38 +4,117 @@ Minimal setup guide to train and evaluate AgentFormer with and without BEV visua
 
 ## Prerequisites
 
-- NVIDIA GPU with 32GB VRAM (RTX 5090 or equivalent)
+- NVIDIA GPU with 24-32GB VRAM
 - 100GB+ free disk space
 - Conda environment
 
+### ✅ **RTX 5090 Supported**
+
+**The RTX 5090 (compute capability sm_120) is NOW supported by PyTorch 2.9+** (released October 2025).
+
+**Supported GPUs:**
+- ✅ RTX 5090 (32GB VRAM, sm_120) - Requires PyTorch 2.9+ with CUDA 12.8
+- ✅ RTX 4090 (24GB VRAM, sm_89)
+- ✅ RTX A6000 (48GB VRAM, sm_86)
+- ✅ A100 (40GB/80GB VRAM, sm_80)
+- ✅ H100 (80GB VRAM, sm_90)
+
 ## Setup
 
+### 1. Create Conda Environment
+
 ```bash
-# Clone and setup environment
 cd AgentFormer
 conda env create -f environment.yml
 conda activate agentformer_py310
 ```
 
+### 2. Install PyTorch with CUDA Support
+
+**For RTX 5090 (Compute Capability 12.0) or newer GPUs:**
+```bash
+# RTX 5090 requires PyTorch 2.9+ with CUDA 12.8 for sm_120 support
+pip install torch==2.9.0 torchvision==0.24.0 --index-url https://download.pytorch.org/whl/cu128
+```
+
+**For older GPUs (RTX 3090, 4090, etc.):**
+```bash
+# Older GPUs can use PyTorch 2.0.1 with CUDA 11.8
+pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cu118
+```
+
+**Check your GPU compute capability:**
+```bash
+nvidia-smi --query-gpu=name,compute_cap --format=csv
+```
+
+### 3. Install OpenMMLab Dependencies
+
+**For PyTorch 2.9+ (RTX 5090):**
+```bash
+# Install OpenMMLab packages (mmcv will build from source, takes ~30 minutes)
+pip install --no-cache-dir mmcv==2.1.0 --no-binary mmcv
+pip install mmdet==3.3.0 mmdet3d==1.4.0 mmengine
+pip install 'numpy<2.0'  # Fix numpy version for compatibility
+```
+
+**For PyTorch 2.0.1 (Older GPUs):**
+```bash
+# Install mmcv-full (pre-built wheel for CUDA 11.8, PyTorch 2.0)
+pip install --only-binary=mmcv-full mmcv-full==1.7.2 -f https://download.openmmlab.com/mmcv/dist/cu118/torch2.0/index.html
+
+# Install mmdet
+pip install mmdet==2.28.2
+
+# Install other OpenMMLab packages
+pip install mmengine mmsegmentation==0.30.0
+```
+
+### 4. Install Additional Dependencies
+
+```bash
+# Install nuScenes devkit and utilities
+pip install nuscenes-devkit easydict glob2
+```
+
+### 5. Verify Installation
+
+```bash
+# Test that all imports work
+python -c "import mmcv; import mmdet; import mmengine; print('✓ All packages imported successfully')"
+
+# Test the data collection script
+python scripts/collect_used_samples.py --help
+```
+
+**Expected output:** You should see the help message without any import errors.
+
 ## Step 1: Download nuScenes Dataset
 
 ```bash
 # Download nuScenes v1.0 mini split (10 scenes, ~4GB)
-python download_nuscenes.py --dataroot nuscenes --version v1.0-mini
+python download_nuscenes.py --dataroot nuscenes
 
 # Or download full trainval split (~350GB)
 # python download_nuscenes.py --dataroot nuscenes --version v1.0-trainval
 ```
 
+you can download from google drive too
+`gdown -f "link" `
+
+extract the `.tar` under `AgentFormer/nuscenes`
+
+
 ## Step 2: Preprocess Data
 
 ```bash
+python data/process_nuscenes.py --data_root nuscenes
 # Generate info pickle files for trajectory prediction
-python scripts/gen_info_subset.py --version v1.0-mini
-
+python scripts/gen_info_subset.py --version v1.0-trainval
 # This creates:
 # - datasets/nuscenes_pred/nuscenes_infos_train_subset.pkl
 # - datasets/nuscenes_pred/nuscenes_infos_val_subset.pkl
+
 ```
 
 ## Step 3: Train Vanilla AgentFormer (Baseline)
@@ -125,6 +204,27 @@ python test.py --cfg nuscenes_5sample_agentformer_bev --gpu 0
 
 ## Troubleshooting
 
+### Installation Issues
+
+**CUDA version mismatch during mmcv-full installation:**
+- Solution: Use the pre-built wheel with `--only-binary=mmcv-full` flag as shown above
+- Do NOT try to compile from source
+
+**Import error: "No module named 'mmdet3d'":**
+- Check that the `.pth` file was created correctly
+- Verify: `cat $CONDA_PREFIX/lib/python3.10/site-packages/mmdetection3d.pth`
+- Should output: `/workspace/vision-augmented-agentformer/mmdetection3d`
+
+**NumPy version errors:**
+- Make sure you downgraded to numpy<2.0
+- Check version: `python -c "import numpy; print(numpy.__version__)"`
+- Should be 1.26.4 or similar
+
+**Missing module errors (easydict, glob2, etc.):**
+- Re-run: `pip install nuscenes-devkit easydict glob2`
+
+### Runtime Issues
+
 **Out of disk space during BEV precomputation:**
 - Use on-the-fly extraction: set `use_precomputed_bev: false` in config
 - Or reduce batch size: `--batch_size 4`
@@ -158,3 +258,40 @@ python test.py --cfg nuscenes_5sample_agentformer_bev --gpu 0
 | Train BEV Stage 2 | 30 hours | 50 epochs |
 | Evaluate BEV model | 10 min | Get ADE/FDE |
 | **Total** | **~60 hours** | Full pipeline |
+
+## Installed Package Versions
+
+After following the setup instructions, you should have:
+
+**For RTX 5090 (PyTorch 2.9+):**
+| Package | Version | Notes |
+|---------|---------|-------|
+| Python | 3.10.x | From conda environment |
+| PyTorch | 2.9.0 | With CUDA 12.8 support for RTX 5090 |
+| torchvision | 0.24.0 | Compatible with PyTorch 2.9.0 |
+| mmcv | 2.1.0 | Built from source (~30 min compile time) |
+| mmdet | 3.3.0 | Object detection framework |
+| mmdet3d | 1.4.0 | 3D object detection framework |
+| mmengine | 0.10.7 | OpenMMLab engine |
+| nuscenes-devkit | 1.1.11 | nuScenes dataset toolkit |
+| numpy | 1.26.4 | Downgraded for compatibility |
+| easydict | 1.13 | Configuration management |
+| glob2 | 0.7 | File pattern matching |
+
+**For Older GPUs (PyTorch 2.0.1):**
+| Package | Version | Notes |
+|---------|---------|-------|
+| Python | 3.10.x | From conda environment |
+| PyTorch | 2.0.1 | With CUDA 11.8 support |
+| torchvision | 0.15.2 | Compatible with PyTorch 2.0.1 |
+| mmcv-full | 1.7.2 | Pre-built wheel (no compilation) |
+| mmdet | 2.28.2 | Object detection framework |
+| mmengine | 0.10.7 | OpenMMLab engine |
+| mmsegmentation | 0.30.0 | Semantic segmentation framework |
+| nuscenes-devkit | 1.1.11 | nuScenes dataset toolkit |
+| numpy | 1.26.4 | Downgraded for compatibility |
+| easydict | 1.13 | Configuration management |
+| glob2 | 0.7 | File pattern matching |
+| mmdet3d | 0.17.3 (local) | Via Python path, no compilation |
+
+**Note:** For RTX 5090 systems, use mmdet3d 1.4.0 from pip which is compatible with PyTorch 2.9+ and mmcv 2.1.0.

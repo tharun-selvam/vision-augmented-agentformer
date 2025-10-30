@@ -1,0 +1,40 @@
+% Chapter Template
+
+\chapter{Conclusion and Future Works} % Main chapter title
+
+\label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 5. \emph{Conclusion and Future Works}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%\t\tSECTION 1
+%---------------------------------------------------------------------------------------
+\section{Conclusion}
+
+This thesis presented an investigation into the integration of Bird's-Eye-View (BEV) features from the BEVDepth model with the AgentFormer motion forecasting framework. The primary hypothesis was that the rich visual context provided by the BEV features would enhance the predictive accuracy of AgentFormer. However, the experimental results demonstrated a degradation in performance compared to the baseline AgentFormer model, which relies solely on trajectory data.
+
+The detailed analysis of the methodology and the potential reasons for the negative results lead to a clear conclusion: simply \textit{plugging in} powerful, pre-trained visual features into a motion forecasting model does not guarantee performance improvement. The process of multi-modal fusion is complex and requires a careful and task-specific approach. The domain mismatch between the pre-training task of the visual model and the downstream forecasting task, the incompatibility of feature representations, and the suboptimal fusion strategy are all likely contributors to the observed negative results.
+
+This work highlights the importance of a holistic approach to multi-modal fusion in the context of autonomous driving. It is not enough to simply combine state-of-the-art models from different domains. Instead, the fusion process itself must be a central part of the model design, and the features from each modality must be carefully adapted and integrated to be beneficial for the end task.
+
+\section{Future Works}
+
+The surprising results of this thesis open up several avenues for future research. The following are some promising directions that could lead to a more successful integration of visual information into motion forecasting models:
+
+\subsection{Fine-tuning the BEV Encoder}
+
+One of the major limitations of this work was the use of a frozen BEV encoder. Fine-tuning the BEV encoder on the motion forecasting task could allow it to learn visual features that are more relevant to trajectory prediction. This would help to bridge the domain gap between the object detection task on which BEVDepth was pre-trained and the motion forecasting task.
+
+\subsection{Advanced Fusion Mechanisms}
+
+The simple MLP-based fusion mechanism used in this project might not be sufficient to effectively combine the visual and trajectory information. Future work should explore more advanced fusion techniques, such as attention-based mechanisms. Cross-attention could enable the model to selectively focus on the most relevant parts of the BEV feature map for each agent, leading to a more context-aware and effective fusion.
+
+\subsection{Targeted Visual Representations}
+
+Instead of using the entire dense BEV feature map, future research could focus on identifying and extracting the most relevant visual features for motion forecasting. This could involve designing a more compact and targeted visual representation that only includes information about key scene elements, such as lane geometry, traffic lights, and crosswalks. This would reduce the dimensionality of the visual input and make it easier for the model to extract the relevant signals.
+
+\subsection{End-to-End Training}
+
+Ultimately, the most promising approach would be to train the entire system end-to-end. This would allow the visual and motion forecasting components of the model to learn and adapt to each other, leading to a more synergistic and effective integration. While computationally expensive, end-to-end training would allow the model to learn the optimal visual features and fusion strategy for the specific task of motion forecasting.
+
+By exploring these future research directions, we can move closer to developing motion forecasting models that can effectively leverage the rich information available in the visual world, leading to safer and more reliable autonomous driving systems.

@@ -192,31 +192,42 @@ class ContextEncoder(nn.Module):
                 bev_feature_map = bev_feature_map.squeeze(2)  # [B, C, H, W]
             bev_fusion_module = data['bev_fusion_module']
 
-            # Get agent positions in world coordinates
-            agent_pos = data['pre_motion'][-1]  # [N, 2] - current positions
+            # Get agent positions in world coordinates for all timesteps
+            # pre_motion shape: [T, N, 2]
+            agent_pos_all_timesteps = data['pre_motion']  # [T, N, 2]
 
-            # Convert to BEV grid coordinates
+            # Convert to BEV grid coordinates for all timesteps
             # Assume BEV covers [-50, 50] x [-50, 50] meters (adjust if needed)
-            x_bound = (-50.0, 50.0, 0.5)
-            y_bound = (-50.0, 50.0, 0.5)
+            x_bound = (-50.0, 50.0, 1.0)
+            y_bound = (-50.0, 50.0, 1.0)
             bev_shape = bev_feature_map.shape[-2:]  # (H, W)
-            bev_coords = world_to_bev_coords(agent_pos, bev_shape, x_bound, y_bound)
 
-            # Sample BEV features at agent locations using grid_sample
-            # bev_coords: [N, 2] -> reshape to [1, N, 1, 2] for grid_sample
-            bev_coords_grid = bev_coords.unsqueeze(0).unsqueeze(2)  # [1, N, 1, 2]
+            # Reshape agent_pos_all_timesteps to [T*N, 2] for world_to_bev_coords
+            agent_pos_flat = agent_pos_all_timesteps.view(-1, 2)
+            bev_coords_flat = world_to_bev_coords(agent_pos_flat, bev_shape, x_bound, y_bound)
 
-            # Sample features: [B, C, H, W] + [1, N, 1, 2] -> [B, C, N, 1]
-            bev_features = F.grid_sample(bev_feature_map, bev_coords_grid,
-                                        mode='bilinear', align_corners=True)
-            # Reshape to [N, C]
-            bev_features = bev_features.squeeze(-1).squeeze(0).transpose(0, 1)  # [N, C]
+            # Reshape bev_coords_flat to [T, N, 1, 2] for grid_sample (batch, height, width, 2)
+            # grid_sample expects input [N, C, H_in, W_in] and grid [N, H_out, W_out, 2]
+            # Here, N is batch size (1), C is bev_feature_map.shape[1], H_in, W_in are bev_shape
+            # We want to sample T*N points, so we treat T*N as the batch dimension for grid_sample
+            # bev_feature_map: [B, C, H, W] -> [1, C, H, W] (assuming B=1 for now)
+            # bev_coords_flat: [T*N, 2] -> [1, T*N, 1, 2] for grid_sample
+            
+            # Expand bev_feature_map to match the batch size of sampled points (T*N)
+            # This assumes bev_feature_map is [1, C, H, W]
+            bev_feature_map_expanded = bev_feature_map.repeat(agent_pos_flat.shape[0], 1, 1, 1) # [T*N, C, H, W]
 
-            # Repeat BEV features for each time step
-            # tf_in shape: [T*N, 1, model_dim]
-            num_timesteps = tf_in.shape[0] // data['agent_num']
-            bev_features_expanded = bev_features.unsqueeze(0).repeat(num_timesteps, 1, 1)  # [T, N, C]
-            bev_features_expanded = bev_features_expanded.reshape(-1, 1, bev_features.shape[-1])  # [T*N, 1, C]
+            bev_coords_grid = bev_coords_flat.unsqueeze(1).unsqueeze(1)  # [T*N, 1, 1, 2]
+
+            # Sample features: [T*N, C, H, W] + [T*N, 1, 1, 2] -> [T*N, C, 1, 1]
+            bev_features_sampled = F.grid_sample(bev_feature_map_expanded, bev_coords_grid,
+                                                mode='bilinear', align_corners=True)
+            
+            # Reshape to [T*N, C]
+            bev_features = bev_features_sampled.squeeze(-1).squeeze(-1)  # [T*N, C]
+
+            # Reshape to [T*N, 1, C] to match tf_in for concatenation
+            bev_features_expanded = bev_features.unsqueeze(1)  # [T*N, 1, C]
 
             # Fuse trajectory and BEV features
             tf_in_fused = torch.cat([tf_in, bev_features_expanded], dim=-1)  # [T*N, 1, model_dim+C]
