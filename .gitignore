@@ -23,7 +23,7 @@ AgentFormer/bev_features/
 *.pt
 
 # Model checkpoints
-AgentFormer/results/
+
 BEVDepth/outputs/
 *.pth
 *.ckpt
